@@ -1,24 +1,24 @@
 import telebot
 import bypasser
 import os
+from config import Vars
 
-# bot
-TOKEN = os.environ.get("TOKEN", "")
+TOKEN = Vars[0]
+GDTot_Crypt = Vars[1]
+Laravel_Session = Vars[2]
+XSRF_TOKEN = Vars[3]
+
+# Bot
 bot = telebot.TeleBot(TOKEN)
-GDTot_Crypt = os.environ.get("CRYPT","b0lDek5LSCt6ZjVRR2EwZnY4T1EvVndqeDRtbCtTWmMwcGNuKy8wYWpDaz0%3D")
-Laravel_Session = os.environ.get("Laravel_Session","")
-XSRF_TOKEN = os.environ.get("XSRF_TOKEN","")
-
 
 # start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Available Sites \n /af - Adfly \n /gp - gplinks \n /dl - droplink \n /lv - linkvertise \n \
+    bot.reply_to(message, "Available Sites\n /af - Adfly \n /dl - droplink \n /lv - linkvertise \n \
 /md - mdisk \n /rl - rocklinks \n /pd - pixeldrain \n /wt - wetransfer \n /mu - megaup \n /gd - Drive Look-Alike (/gdlist) \n \
 /ot - others (/otlist) \n /ou - ouo \n /gt - gdtot \n /sh -  sharer \n /ps - psa \n /go - gofile \n /st - shorte \n \
 /pi - pixl \n /an - anonfiles \n /gy - gyanilinks \n /sg - shortingly \n /su - shareus \n /db - dropbox \n /fc - filecrypt \n \
 /zs - zippyshare \n /mf - mediafire")
-
 
 # mediafire
 @bot.message_handler(commands=['mf'])
@@ -28,7 +28,7 @@ def mf(message):
     except:
         bot.reply_to(message, "Invalid format, /xx link")
         return
-    print("You Have Entered mediafire:",url)
+    print("Entered MediaFire URL:",url)
     msg = bot.reply_to(message, "bypassing...")
     link = bypasser.mediafire(url)
     bot.edit_message_text(link, msg.chat.id, msg.id)
@@ -42,7 +42,7 @@ def zs(message):
     except:
         bot.reply_to(message, "Invalid format, /xx link")
         return
-    print("You Have Entered zippyshare:",url)
+    print("Entered ZippyShare URL:",url)
     msg = bot.reply_to(message, "bypassing...")
     link = bypasser.zippyshare(url)
     bot.edit_message_text(link, msg.chat.id, msg.id)
