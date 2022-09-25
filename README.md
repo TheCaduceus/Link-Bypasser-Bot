@@ -1,23 +1,41 @@
-# Link-Bypasser-Bot
+<h1 align="center"><b>🔗Link Bypasser Bot</b></h1>
+<p align="center"><b>Powerful & Lightweight Telegram Bot to bypass Ad Links.🔥</b></p>
 
-a Telegram Bot that can Bypass the Ad Links
+## ⚙️Installation
+**First verify your machine have <a href="https://www.python.org/downloads/">Python with PIP</a> & <a href="https://git-scm.com/downloads">Git</a> installed.**
 
+**1.Download Repository:**
+```
+git clone https://github.com/TheCaduceus/Link-Bypasser-Bot.git
+```
+**2.Install Requirements:**
+```
+pip install -r requirements.txt
+```
+**3.Fill `config.py`:**
+```
+nano config.py
+```
+**4.Run the Bot:**
+```
+py main.py
+```
+## ✏️ Variables
+**Below given variables should be filled in <a href="https://github.com/TheCaduceus/Link-Bypasser-Bot/blob/main/config.py">config.py</a> file**
+- **`TOKEN` Enter Bot API Token from <a href="https://BotFath.t.me">@BotFather</a>**
+- **`CRYPT` Enter GdToT Crypt cookie to bypass GdToT links.(Optional)**
+- **`XSRF TOKEN` Enter your Sharer.pw `XSRF_TOKEN` cookie.**
+- **`Laravel Session` Enter your Sharer.pw Laravel Session cookie.**
 ---
 
-## Variables
 
-- `TOKEN` Your bot token from @BotFather
-- `CRYPT` (optional) Your GDTot Crypt! If you don't know how to get Crypt then [Learn Here](https://www.youtube.com/watch?v=EfZ29CotRSU)
-- `XSRF_TOKEN` and `Laravel_Session` (both are optional) XSRF_TOKEN and laravel_session cookies! If you don't know how to get then then watch [this Video](https://www.youtube.com/watch?v=EfZ29CotRSU) (for GDTOT) and do the same for Sharer.pw
----
-
-
-## Commands to set in bot
+## Commands for <a href="https://BotFath.t.me">@BotFather</a>
 
 ```
 start - Welcome Message with supported sites
+gdlist - Drive Look-Alike site list
 af - adfly
-gp - gplinks
+gp - gplinks [Not Working!]
 dl - droplink
 lv - linkvertise
 md - mdisk
@@ -43,9 +61,3 @@ fc - filecrypt
 zs - zippyshare
 mf - mediafire
 ```
----
-
-### Credits
-1. [Dr Caduceus](https://github.com/TheCaduceus) <i> for writing the Script in Colab </i>
-2. [Miss Emily](https://github.com/missemily2022) <i> for formatting the Code and adding more Scripts via Personal API </i>
-3. [Yukki Senpai](https://github.com/xcscxr) <i> for making various scripts publicly on his Profile </i>
