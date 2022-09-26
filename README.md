@@ -29,10 +29,10 @@ py main.py
 - **`CRYPT` Enter GdToT Crypt cookie to bypass GdToT links.(Optional)**
 - **`XSRF TOKEN` Enter your Sharer.pw `XSRF_TOKEN` cookie.**
 - **`Laravel Session` Enter your Sharer.pw Laravel Session cookie.**
-- **`KOLOP_CRYPT` (optional) Your KOLOP Crypt!**
-- **`DRIVEFIRE_CRYPT` (optional) Your DRIVEFIRE Crypt!**
-- **`HUBDRIVE_CRYPT` (optional) Your HUBDRIVE Crypt!**
-- **`KATDRIVE_CRYPT` (optional) Your KATDRIVE Crypt!**
+- **`KOLOP_CRYPT` Your KOLOP Crypt. (Optional)**
+- **`DRIVEFIRE_CRYPT` Enter DRIVEFIRE Crypt! (Optional)**
+- **`HUBDRIVE_CRYPT` Enter HUBDRIVE Crypt. (Optional)**
+- **`KATDRIVE_CRYPT` Enter KATDRIVE Crypt. (Optional)**
 ---
 
 
