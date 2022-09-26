@@ -25,14 +25,14 @@ py main.py
 ```
 ## ✏️ Variables
 **Below given variables should be filled in <a href="https://github.com/TheCaduceus/Link-Bypasser-Bot/blob/main/config.py">config.py</a> file**
-- **`TOKEN` Enter Bot API Token from <a href="https://BotFath.t.me">@BotFather</a>**
+- **`TOKEN` Enter Bot API Token from <a href="https://BotFather.t.me">@BotFather</a>**
 - **`CRYPT` Enter GdToT Crypt cookie to bypass GdToT links.(Optional)**
 - **`XSRF TOKEN` Enter your Sharer.pw `XSRF_TOKEN` cookie.**
 - **`Laravel Session` Enter your Sharer.pw Laravel Session cookie.**
 ---
 
 
-## Commands for <a href="https://BotFath.t.me">@BotFather</a>
+## Commands for <a href="https://BotFather.t.me">@BotFather</a>
 
 ```
 start - Welcome Message with supported sites
