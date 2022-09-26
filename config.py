@@ -1,12 +1,12 @@
 Vars = [
-	# Bot API Token
-	"",
-	# GdToT Crypt
-	"",
-	# Laravel Session
-	"",
-	# XSRF_TOKEN 
-	"",
+    # Bot API Token
+    "",
+    # GdToT Crypt
+    "",
+    # Laravel Session
+    "",
+    # XSRF_TOKEN 
+    "",
     # KOLOP_CRYPT
     "",
     # DRIVEFIRE_CRYPT
