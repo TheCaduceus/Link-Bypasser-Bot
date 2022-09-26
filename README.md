@@ -32,7 +32,7 @@ py main.py
 - **`KOLOP_CRYPT` (optional) Your KOLOP Crypt!**
 - **`DRIVEFIRE_CRYPT` (optional) Your DRIVEFIRE Crypt!**
 - **`HUBDRIVE_CRYPT` (optional) Your HUBDRIVE Crypt!**
-- **`KATDRIVE_CRYP` (optional) Your KATDRIVE Crypt!**
+- **`KATDRIVE_CRYPT` (optional) Your KATDRIVE Crypt!**
 ---
 
 
