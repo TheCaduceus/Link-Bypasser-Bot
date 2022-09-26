@@ -6,7 +6,15 @@ Vars = [
 	# Laravel Session
 	"",
 	# XSRF_TOKEN 
-	""
+	"",
+    # KOLOP_CRYPT
+    "",
+    # DRIVEFIRE_CRYPT
+    "",
+    # HUBDRIVE_CRYPT
+    "",
+    # KATDRIVE_CRYPT
+    ""
 ]
 
 if not Vars[0]:

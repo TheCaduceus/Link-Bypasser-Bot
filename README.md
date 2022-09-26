@@ -29,6 +29,10 @@ py main.py
 - **`CRYPT` Enter GdToT Crypt cookie to bypass GdToT links.(Optional)**
 - **`XSRF TOKEN` Enter your Sharer.pw `XSRF_TOKEN` cookie.**
 - **`Laravel Session` Enter your Sharer.pw Laravel Session cookie.**
+- **`KOLOP_CRYPT` (optional) Your KOLOP Crypt!**
+- **`DRIVEFIRE_CRYPT` (optional) Your DRIVEFIRE Crypt!**
+- **`HUBDRIVE_CRYPT` (optional) Your HUBDRIVE Crypt!**
+- **`KATDRIVE_CRYP` (optional) Your KATDRIVE Crypt!**
 ---
 
 
@@ -63,6 +67,10 @@ db - dropbox
 fc - filecrypt
 zs - zippyshare
 mf - mediafire
+ko - kolop
+df - drivefire
+hd - hubdrive
+kd - katdrive
 ```
 ## 🍵Other Projects
 - **<a href="https://drgraph.cf/">Dr.Graph</a>: Online Anonymous Text / Pasting platform without limits.**

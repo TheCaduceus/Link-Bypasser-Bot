@@ -7,6 +7,10 @@ TOKEN = Vars[0]
 GDTot_Crypt = Vars[1]
 Laravel_Session = Vars[2]
 XSRF_TOKEN = Vars[3]
+KCRYPT = Vars[4]
+DCRYPT = Vars[5]
+HCRYPT = Vars[6]
+KATCRYPT = Vars[7]
 
 # Bot
 bot = telebot.TeleBot(TOKEN)
@@ -14,11 +18,84 @@ bot = telebot.TeleBot(TOKEN)
 # start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Available Sites\n /af - Adfly \n /dl - droplink \n /lv - linkvertise \n \
-/md - mdisk \n /rl - rocklinks \n /pd - pixeldrain \n /wt - wetransfer \n /mu - megaup \n /gd - Drive Look-Alike (/gdlist) \n \
+    bot.reply_to(message, "Available Sites\n /af - adfly \n /dl - droplink \n /lv - linkvertise \n \
+/md - mdisk \n /rl - rocklinks \n /pd - pixeldrain \n /wt - wetransfer \n /mu - megaup \n /gd - gdrive look-alike (/gdlist) \n \
 /ot - others (/otlist) \n /ou - ouo \n /gt - gdtot \n /sh -  sharer \n /ps - psa \n /go - gofile \n /st - shorte \n \
 /pi - pixl \n /an - anonfiles \n /gy - gyanilinks \n /sg - shortingly \n /su - shareus \n /db - dropbox \n /fc - filecrypt \n \
-/zs - zippyshare \n /mf - mediafire")
+/zs - zippyshare \n /mf - mediafire \n /ko - kolop \n /df - drivefire \n /hd - hubdrive \n /kd - katdrive")
+
+
+# katdrive
+@bot.message_handler(commands=['kd'])
+def kd(message):
+    if KATCRYPT == "":
+        bot.reply_to(message, "You can't use this because KATDRIVE_CRYPT ENV are not set")
+        return
+
+    try:
+        url = message.text.split("/kd ")[1]
+    except:
+        bot.reply_to(message, "Invalid format, /xx link")
+        return
+    print("Entered Link katdrive:",url)
+    msg = bot.reply_to(message, "bypassing...")
+    link = bypasser.katdrive_dl(url, KATCRYPT)
+    bot.edit_message_text(link, msg.chat.id, msg.id)
+
+
+# hubdrive
+@bot.message_handler(commands=['hd'])
+def hd(message):
+    if HCRYPT == "":
+        bot.reply_to(message, "You can't use this because HUBDRIVE_CRYPT ENV are not set")
+        return
+
+    try:
+        url = message.text.split("/hd ")[1]
+    except:
+        bot.reply_to(message, "Invalid format, /xx link")
+        return
+    print("Entered Link hubdrive:",url)
+    msg = bot.reply_to(message, "bypassing...")
+    link = bypasser.hubdrive_dl(url, HCRYPT)
+    bot.edit_message_text(link, msg.chat.id, msg.id)
+
+
+# drivefire
+@bot.message_handler(commands=['df'])
+def df(message):
+    if DCRYPT == "":
+        bot.reply_to(message, "You can't use this because DRIVEFIRE_CRYPT ENV are not set")
+        return
+
+    try:
+        url = message.text.split("/df ")[1]
+    except:
+        bot.reply_to(message, "Invalid format, /xx link")
+        return
+    print("Entered Link drivefire:",url)
+    msg = bot.reply_to(message, "bypassing...")
+    link = bypasser.drivefire_dl(url, DCRYPT)
+    bot.edit_message_text(link, msg.chat.id, msg.id)
+
+
+# kolop
+@bot.message_handler(commands=['ko'])
+def ko(message):
+    if KCRYPT == "":
+        bot.reply_to(message, "You can't use this because KOLOP_CRYPT ENV are not set")
+        return
+
+    try:
+        url = message.text.split("/ko ")[1]
+    except:
+        bot.reply_to(message, "Invalid format, /xx link")
+        return
+    print("Entered Link kolop:",url)
+    msg = bot.reply_to(message, "bypassing...")
+    link = bypasser.kolop_dl(url, KCRYPT)
+    bot.edit_message_text(link, msg.chat.id, msg.id)
+
 
 # mediafire
 @bot.message_handler(commands=['mf'])
