@@ -14,6 +14,8 @@ Vars = [
     # HUBDRIVE_CRYPT
     "",
     # KATDRIVE_CRYPT
+    "",
+    # UPTOBOX_TOKEN
     ""
 ]
 
