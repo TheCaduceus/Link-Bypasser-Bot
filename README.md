@@ -33,6 +33,7 @@ py main.py
 - **`DRIVEFIRE_CRYPT` Enter DRIVEFIRE Crypt! (Optional)**
 - **`HUBDRIVE_CRYPT` Enter HUBDRIVE Crypt. (Optional)**
 - **`KATDRIVE_CRYPT` Enter KATDRIVE Crypt. (Optional)**
+- **`UPTOBOX_TOKEN` Enter UPTOBOX Token. (Optional)**
 ---
 
 
