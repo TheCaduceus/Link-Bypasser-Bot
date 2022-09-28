@@ -11,8 +11,9 @@ import cloudscraper
 import hashlib
 import requests
 import os
+from config import Vars
 
-UPTOBOX_TOKEN = os.environ.get("UPTOBOX_TOKEN","")
+UPTOBOX_TOKEN = Vars[8]
 
 class DirectDownloadLinkException(Exception):
     """Not method found for extracting direct download link from the http link"""
