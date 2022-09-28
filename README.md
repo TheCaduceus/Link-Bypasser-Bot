@@ -40,33 +40,24 @@ py main.py
 
 ```
 start - Welcome Message with supported sites
-gdlist - Drive Look-Alike site list
+dl - ddl
 af - adfly
-gp - gplinks [Not Working!]
-dl - droplink
+gp - gplinks
+dp - droplink
 lv - linkvertise
-md - mdisk
 rl - rocklinks
-pd - pixeldrain
-wt - wetransfer
-mu - megaup
 gd - google drive look-alike
 ot - others
 ou - ouo
 gt - gdtot
 sh - sharer.pw
 ps - psa.pm
-go - gofile
 st - shorte
 pi - pixl
-an - anonfiles
 gy - gyanilinks
 sg - shortingly
 su - shareus
-db - dropbox
 fc - filecrypt
-zs - zippyshare
-mf - mediafire
 ko - kolop
 df - drivefire
 hd - hubdrive
