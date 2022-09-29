@@ -26,9 +26,7 @@ Vars = [
 import logging as log
 
 # Setup Logger
-file_handler = log.FileHandler('runtime-log.txt')
-formatter = log.Formatter('%(asctime)s:%(levelname)s:%(message)s')
-file_handler.setFormatter(formatter)
+log.basicConfig(level=log.INFO, filename='runtime-log.txt',format='%(asctime)s:%(levelname)s:%(message)s', encoding='utf-8')
 
 def check():
     if not Vars[0]:
