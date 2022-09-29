@@ -4,7 +4,7 @@ Get_ENV = False
 # Required if Get_ENV == False
 Vars = [
     # Bot API Token
-    "454",
+    "",
     # GdToT Crypt
     "",
     # Laravel Session
