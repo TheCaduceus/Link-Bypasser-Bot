@@ -23,14 +23,20 @@ nano config.py
 ```
 py main.py
 ```
+**5.Getting Logs:**
+```
+cat runtime-log.txt
+```
+**By Default, Bot saves all live runtime logs in `runtime-log.txt` file! If you tackle any error then don't forget to share your log file.**
 ## ✏️ Variables
-**Below given variables should be filled in <a href="https://github.com/TheCaduceus/Link-Bypasser-Bot/blob/main/config.py">config.py</a> file**
+**Below given variables should be filled in <a href="https://github.com/TheCaduceus/Link-Bypasser-Bot/blob/main/config.py">config.py</a> file or can be set as Environment Variable.**
+- **`Get_ENV` Enter `True` if you want to get Values from System environment or `False` if simply putting in `config.py` itself**
 - **`TOKEN` Enter Bot API Token from <a href="https://BotFather.t.me">@BotFather</a>**
 - **`CRYPT` Enter GdToT Crypt cookie to bypass GdToT links.(Optional)**
 - **`XSRF TOKEN` Enter your Sharer.pw `XSRF_TOKEN` cookie.**
 - **`Laravel Session` Enter your Sharer.pw Laravel Session cookie.**
 - **`KOLOP_CRYPT` Your KOLOP Crypt. (Optional)**
-- **`DRIVEFIRE_CRYPT` Enter DRIVEFIRE Crypt! (Optional)**
+- **`DRIVEFIRE_CRYPT` Enter DRIVEFIRE Crypt. (Optional)**
 - **`HUBDRIVE_CRYPT` Enter HUBDRIVE Crypt. (Optional)**
 - **`KATDRIVE_CRYPT` Enter KATDRIVE Crypt. (Optional)**
 - **`UPTOBOX_TOKEN` Enter UPTOBOX Token. (Optional)**
@@ -63,6 +69,9 @@ ko - kolop
 df - drivefire
 hd - hubdrive
 kd - katdrive
+ddllist - DDL supported sites
+gdlist - Gdrive look-alike sites.
+otlist - Others supported sites
 ```
 ## 🍵Other Projects
 - **<a href="https://drgraph.cf/">Dr.Graph</a>: Online Anonymous Text / Pasting platform without limits.**
