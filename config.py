@@ -1,4 +1,4 @@
-import logging
+import logging as log
 
 Vars = [
     # Bot API Token
