@@ -5,9 +5,7 @@ from config import log, Vars
 import ddl
 
 # Setup Logger
-file_handler = log.FileHandler('runtime-log.txt')
-formatter = log.Formatter('%(asctime)s:%(levelname)s:%(message)s')
-file_handler.setFormatter(formatter)
+log.basicConfig(level=log.INFO, filename='runtime-log.txt',format='%(asctime)s:%(levelname)s:%(message)s', encoding='utf-8')
 
 # log.warning() - For Missing Values
 # log.error() - For Error in Bypass / including if occured due to missing values
