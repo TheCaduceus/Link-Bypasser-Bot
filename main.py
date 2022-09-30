@@ -326,7 +326,7 @@ def af(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    log.info(f"Received AdFly Link: {url})
+    log.info(f"Received AdFly Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     out = bypasser.adfly(url)
     link = out['bypassed_url']
