@@ -23,6 +23,13 @@ Vars = [
     ""
 ]
 
+APIs = [
+    "https://us-central1-my-apps-server.cloudfunctions.net/r?shortid=",
+    "https://api.emilyx.in/api",
+    "https://api.bypass.vip/",
+    "https://api.gofile.io"
+]
+
 import os
 import logging as log
 
