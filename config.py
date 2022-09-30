@@ -93,14 +93,15 @@ if Get_ENV == False:
     check()
 elif Get_ENV == True:
     log.info("Getting Values from System Environment...")
-    TOKEN = os.environ.get("CRYPT","")
-    GDTot_Crypt = os.environ.get("Laravel_Session","")
+    TOKEN = os.environ.get("TOKEN","")
+    GDTot_Crypt = os.environ.get("Crypt","")
     Laravel_Session = os.environ.get("Laravel_Session","")
     XSRF_TOKEN = os.environ.get("XSRF_TOKEN","")
     KCRYPT = os.environ.get("KOLOP_CRYPT","")
     DCRYPT = os.environ.get("DRIVEFIRE_CRYPT","")
     HCRYPT = os.environ.get("HUBDRIVE_CRYPT","")
     KATCRYPT = os.environ.get("KATDRIVE_CRYPT","")
+    UPTOBOX = os.environ.get("UPTOBOX_TOKEN","")
 
     Vars = [
         TOKEN,
@@ -110,7 +111,8 @@ elif Get_ENV == True:
         KCRYPT,
         DCRYPT,
         HCRYPT,
-        KATCRYPT
+        KATCRYPT,
+        UPTOBOX
     ]
     check()
 else:
