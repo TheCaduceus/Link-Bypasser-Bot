@@ -11,7 +11,10 @@ import cloudscraper
 import hashlib
 import requests
 import os
-from config import Vars
+from config import log, Vars
+
+# Setup Logger
+log.basicConfig(level=log.INFO, filename='runtime-log.txt',format='%(asctime)s:%(levelname)s:%(message)s', encoding='utf-8')
 
 UPTOBOX_TOKEN = Vars[8]
 
@@ -40,7 +43,7 @@ def uptobox(url: str, UPTOBOX_TOKEN: str) -> str:
     except IndexError:
         raise DirectDownloadLinkException("No Uptobox links found")
     if UPTOBOX_TOKEN is None:
-        print('UPTOBOX_TOKEN not provided!')
+        log.error('Unable to bypass UPTOBOX Link because absence of cookie(s)')
         dl_url = 'UPTOBOX TOKEN not provided!'
     else:
         try:
@@ -64,7 +67,7 @@ def uptobox(url: str, UPTOBOX_TOKEN: str) -> str:
                 cooldown = divmod(result['data']['waiting'], 60)
                 raise DirectDownloadLinkException(f"ERROR: Uptobox is being limited please wait {cooldown[0]} min {cooldown[1]} sec.")
             else:
-                print(f"UPTOBOX_ERROR: {result}")
+                log.error(f"UPTOBOX_ERROR: {result}")
                 raise DirectDownloadLinkException(f"ERROR: {result['message']}")
     return dl_url
 

@@ -1,8 +1,15 @@
 import telebot
 import bypasser
 import os
-from config import Vars
+from config import log, Vars
 import ddl
+
+# Setup Logger
+log.basicConfig(level=log.INFO, filename='runtime-log.txt',format='%(asctime)s:%(levelname)s:%(message)s', encoding='utf-8')
+
+# log.warning() - For Missing Values
+# log.error() - For Error in Bypass / including if occured due to missing values
+# log.info() - Received Links / Bot General Messages
 
 TOKEN = Vars[0]
 GDTot_Crypt = Vars[1]
@@ -57,7 +64,7 @@ def dl(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered ddl:",url)
+    log.info(f"Received DDL Link {url}")
     msg = bot.reply_to(message, "⚡ _generating..._", parse_mode="Markdown")
     link = ddl.direct_link_generator(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -68,8 +75,8 @@ def dl(message):
 def kd(message):
     if KATCRYPT == "":
         bot.reply_to(message, "🚫 _You can't use this because_ *KATDRIVE_CRYPT* _ENV is not set_", parse_mode="Markdown")
+        log.info("Unable to bypass KatDrive Link due to absence of Cookie(s).")
         return
-
     try:
         url = message.reply_to_message.text
     except:
@@ -78,7 +85,7 @@ def kd(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link katdrive:",url)
+    log.info(f"Received KatDrive Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.katdrive_dl(url, KATCRYPT)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -89,6 +96,7 @@ def kd(message):
 def hd(message):
     if HCRYPT == "":
         bot.reply_to(message, "🚫 _You can't use this because_ *HUBDRIVE_CRYPT* _ENV is not set_", parse_mode="Markdown")
+        log.error("Unable to bypass HubDrive Link due to absence of Cookie(s).")
         return
 
     try:
@@ -99,7 +107,7 @@ def hd(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link hubdrive:",url)
+    log.info(f"Received HubDrive Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.hubdrive_dl(url, HCRYPT)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -110,6 +118,7 @@ def hd(message):
 def df(message):
     if DCRYPT == "":
         bot.reply_to(message, "🚫 _You can't use this because_ *DRIVEFIRE_CRYPT* _ENV is not set_", parse_mode="Markdown")
+        log.error("Unable to bypass DriveFire Link due to absence of Cookie(s).")
         return
 
     try:
@@ -120,7 +129,7 @@ def df(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link drivefire:",url)
+    log.info(f"Received DriveFire Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.drivefire_dl(url, DCRYPT)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -131,6 +140,7 @@ def df(message):
 def ko(message):
     if KCRYPT == "":
         bot.reply_to(message, "🚫 _You can't use this because_ *KOLOP_CRYPT* _ENV is not set_", parse_mode="Markdown")
+        log.error("Unable to bypass Kolop Link due to absence of Cookie(s).")
         return
 
     try:
@@ -141,7 +151,7 @@ def ko(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link kolop:",url)
+    log.info(f"Received kolop Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.kolop_dl(url, KCRYPT)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -158,7 +168,7 @@ def fc(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered filecrypt:",url)
+    log.info(f"Received FileCrypt Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.filecrypt(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -175,7 +185,7 @@ def su(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered shareus:",url)
+    log.info(f"Received ShareUs Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.shareus(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -192,7 +202,7 @@ def sg(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered shortingly:",url)
+    log.info(f"Received Shortingly Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.shortlingly(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -209,7 +219,7 @@ def gy(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered gyanilinks:",url)
+    log.info(f"Received Gyanilinks Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.gyanilinks(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -226,7 +236,7 @@ def pi(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered pixl:",url)
+    log.info(f"Received Pixl Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.pixl(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -243,7 +253,7 @@ def st(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered shorte:",url)
+    log.info(f"Received Shorte Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.sh_st_bypass(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -260,7 +270,7 @@ def ps(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered psa:",url)
+    log.info(f"Received PSA Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     links = bypasser.psa_bypasser(url)
     bot.edit_message_text(f'_{links}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -271,6 +281,7 @@ def ps(message):
 def sh(message):
     if XSRF_TOKEN == "" or Laravel_Session == "":
         bot.reply_to(message, "🚫 _You can't use this because_ *XSRF_TOKEN* _and_ *Laravel_Session* _ENV are not set_", parse_mode="Markdown")
+        log.error("Unable to bypass Sharer.pw Link due to absence of Cookie(s).")
         return
 
     try:
@@ -281,7 +292,7 @@ def sh(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link sharer:",url)
+    log.info(f"Received Sharer.pw Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.sharer_pw(url, Laravel_Session, XSRF_TOKEN)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -298,7 +309,7 @@ def gt(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link gdtot:",url)
+    log.info(f"Received GdToT Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.gdtot(url,GDTot_Crypt)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -315,7 +326,7 @@ def af(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered adfly:",url)
+    log.info(f"Received AdFly Link: {url})
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     out = bypasser.adfly(url)
     link = out['bypassed_url']
@@ -336,7 +347,7 @@ def gp(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("Entered Link gplink:",url)
+    log.info(f"Received GPLinks Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.gplinks(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -353,7 +364,7 @@ def dp(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered droplink:",url)
+    log.info(f"Received DropLink: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.droplink(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -370,7 +381,7 @@ def lv(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered linkvertise:",url)
+    log.info(f"Received Linkvertise Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.linkvertise(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -387,7 +398,7 @@ def rl(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered rocklinks:",url)
+    log.info(f"Received RockLinks Link: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.rocklinks(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown")
@@ -410,7 +421,7 @@ def ou(message):
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown") 
 
 
-# gd lokk a like
+# gd look a like
 @bot.message_handler(commands=['gd'])
 def gd(message):
     try:
@@ -421,7 +432,7 @@ def gd(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered gdrive:",url)
+    log.info(f"Received GD Look-A-Like Link: {url})
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.unified(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown") 
@@ -438,7 +449,7 @@ def ot(message):
         except:
             bot.reply_to(message, "⚠️ _Invalid format, either_ *reply* _to a_ *link* _or use_ */xx link*", parse_mode="Markdown")
             return
-    print("You Have Entered others:",url)
+    log.info(f"Received Others links: {url}")
     msg = bot.reply_to(message, "🔎 _bypassing..._", parse_mode="Markdown")
     link = bypasser.others(url)
     bot.edit_message_text(f'_{link}_', msg.chat.id, msg.id, parse_mode="Markdown") 
@@ -518,5 +529,5 @@ def ddllis(message):
     bot.reply_to(message, list, parse_mode="Markdown")       
 
 # server loop
-print("bot started")
+log.info("--BOT STARTED--")
 bot.infinity_polling()
