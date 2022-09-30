@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 import hashlib
 import json
+from config import APIs
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -268,7 +269,7 @@ def dropbox(url):
 
 def shareus(url):
     token = url.split("=")[-1]
-    bypassed_url = "https://us-central1-my-apps-server.cloudfunctions.net/r?shortid="+ token
+    bypassed_url = APIs[0] + token
     response = requests.get(bypassed_url).text
     return response
 
@@ -443,7 +444,7 @@ def sh_st_bypass(url):
 # gofile
 
 def gofile_dl(url,password=""):
-    api_uri = 'https://api.gofile.io'
+    api_uri = APIs[3]
     client = requests.Session()
     res = client.get(api_uri+'/createAccount').json()
     
@@ -665,7 +666,7 @@ def gplinks(url: str):
 # droplink
 
 def droplink(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -685,7 +686,7 @@ def droplink(url):
 # link vertise
 
 def linkvertise(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -700,7 +701,7 @@ def linkvertise(url):
     else:
         try:
             payload = {"url": url}
-            url_bypass = requests.post("https://api.bypass.vip/", data=payload).json()
+            url_bypass = requests.post(APIs[2], data=payload).json()
             bypassed = url_bypass["destination"]
             return bypassed
         except:
@@ -714,7 +715,7 @@ def linkvertise(url):
 def others(url):
     try:
         payload = {"url": url}
-        url_bypass = requests.post("https://api.bypass.vip/", data=payload).json()
+        url_bypass = requests.post(APIs[2], data=payload).json()
         bypassed = url_bypass["destination"]
         return bypassed
     except:
@@ -778,7 +779,7 @@ def ouo(url):
 # mdisk
 
 def mdisk(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -833,7 +834,7 @@ def rocklinks(url):
 # pixeldrain
 
 def pixeldrain(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -853,7 +854,7 @@ def pixeldrain(url):
 # we transfer
 
 def wetransfer(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -873,7 +874,7 @@ def wetransfer(url):
 # megaup
 
 def megaup(url):
-    api = "https://api.emilyx.in/api"
+    api = APIs[1]
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -1006,4 +1007,4 @@ def unified(url):
         return "Unable to Extract GDrive Link"
 
 
-#####################################################################################################        
+#####################################################################################################
