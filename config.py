@@ -23,6 +23,17 @@ Vars = [
     ""
 ]
 
+# AppDrive or DriveApp Account credentials
+# To bypass limits imposed on Anonymous users
+# Will also work/used for look-a-like sites
+
+Creds = [
+    # AppDrive/DriveApp Email ID
+    "",
+    # AppDrive/DriveApp Password
+    ""
+]
+
 APIs = [
     "https://us-central1-my-apps-server.cloudfunctions.net/r?shortid=",
     "https://api.emilyx.in/api",
@@ -82,7 +93,14 @@ def check():
         log.warning("UPTOBOX_TOKEN not provided!")
     else:
         log.info("Found UPTOBOX_TOKEN.")
-
+        
+    log.info("Now checking for Credentials...")
+    
+    if not Creds[0] or not Creds[1]:
+        log.warning("AppDrive or DriveApp Credentials not found! Limit will be imposed on Anonymous user.")
+    else:
+        log.info("AppDrive or DriveApp Credentials found.")
+    
     if Get_ENV == False:
         log.info("Got Values from config file!")
     else:
@@ -102,7 +120,9 @@ elif Get_ENV == True:
     HCRYPT = os.environ.get("HUBDRIVE_CRYPT","")
     KATCRYPT = os.environ.get("KATDRIVE_CRYPT","")
     UPTOBOX = os.environ.get("UPTOBOX_TOKEN","")
-
+    AD_EMAIL = os.environ.get("AD_EMAIL","")
+    AD_PASS = os.environ.get("AD_PASS","")
+    
     Vars = [
         TOKEN,
         GDTot_Crypt,
@@ -113,6 +133,11 @@ elif Get_ENV == True:
         HCRYPT,
         KATCRYPT,
         UPTOBOX
+    ]
+    
+    Creds = [
+        AD_EMAIL,
+        AD_PASS
     ]
     check()
 else:
