@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 import hashlib
 import json
-from config import APIs
+from config import APIs, Creds
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -897,8 +897,8 @@ def unified(url):
 
     try:
 
-        Email = "OPTIONAL"
-        Password = "OPTIONAL"
+        Email = Creds[0]
+        Password = Creds[1]
 
         account = {"email": Email, "passwd": Password}
         client = cloudscraper.create_scraper(allow_brotli=False)
