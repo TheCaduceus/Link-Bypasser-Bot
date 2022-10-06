@@ -11,7 +11,7 @@ import cloudscraper
 import hashlib
 import requests
 import os
-from config import log, Vars
+from config import log, Vars, sys
 
 # Setup Logger
 log.basicConfig(
