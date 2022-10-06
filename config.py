@@ -41,7 +41,7 @@ APIs = [
     "https://api.gofile.io"
 ]
 
-import os
+import os, sys
 import logging as log
 
 # Setup Logger
