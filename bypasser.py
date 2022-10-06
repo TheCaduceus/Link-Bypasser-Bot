@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 import hashlib
 import json
-from config import APIs, Creds
+from config import APIs, Creds, sys
 from dotenv import load_dotenv
 load_dotenv()
 
