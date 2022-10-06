@@ -1,7 +1,7 @@
 import telebot
 import bypasser
 import os
-from config import log, Vars
+from config import log, Vars, sys
 import ddl
 
 # Setup Logger
