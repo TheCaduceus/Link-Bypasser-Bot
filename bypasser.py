@@ -666,7 +666,7 @@ def gplinks(url: str):
 # droplink
 
 def droplink(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/bypass"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -686,7 +686,7 @@ def droplink(url):
 # link vertise
 
 def linkvertise(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/bypass"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -779,7 +779,7 @@ def ouo(url):
 # mdisk
 
 def mdisk(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/direct"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -834,7 +834,7 @@ def rocklinks(url):
 # pixeldrain
 
 def pixeldrain(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/direct"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -854,7 +854,7 @@ def pixeldrain(url):
 # we transfer
 
 def wetransfer(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/direct"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
@@ -874,7 +874,7 @@ def wetransfer(url):
 # megaup
 
 def megaup(url):
-    api = APIs[1]
+    api = f"{APIs[1]}/direct"
     client = cloudscraper.create_scraper(allow_brotli=False)
     resp = client.get(url)
     if resp.status_code == 404:
