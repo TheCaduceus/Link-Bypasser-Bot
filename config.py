@@ -98,14 +98,14 @@ def check():
         log.warning("UPTOBOX_TOKEN not provided!")
     else:
         log.info("Found UPTOBOX_TOKEN.")
-        
+
     log.info("Now checking for Credentials...")
-    
+
     if not Creds[0] or not Creds[1]:
         log.warning("AppDrive or DriveApp Credentials not found! Limit will be imposed on Anonymous user.")
     else:
         log.info("AppDrive or DriveApp Credentials found.")
-    
+
     if Get_ENV == False:
         log.info("Got Values from config file!")
     else:
@@ -127,7 +127,7 @@ elif Get_ENV == True:
     UPTOBOX = os.environ.get("UPTOBOX_TOKEN","")
     AD_EMAIL = os.environ.get("AD_EMAIL","")
     AD_PASS = os.environ.get("AD_PASS","")
-    
+
     Vars = [
         TOKEN,
         GDTot_Crypt,
@@ -139,7 +139,7 @@ elif Get_ENV == True:
         KATCRYPT,
         UPTOBOX
     ]
-    
+
     Creds = [
         AD_EMAIL,
         AD_PASS

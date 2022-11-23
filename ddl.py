@@ -210,8 +210,7 @@ def racaty(url: str) -> str:
     ids = soup.find("input", {"name": "id"})["value"]
     rapost = scraper.post(url, data = {"op": op, "id": ids})
     rsoup = BeautifulSoup(rapost.text, "lxml")
-    dl_url = rsoup.find("a", {"id": "uniqueExpirylink"})["href"].replace(" ", "%20")
-    return dl_url
+    return rsoup.find("a", {"id": "uniqueExpirylink"})["href"].replace(" ", "%20")
 
 def fichier(link: str) -> str:
     """ 1Fichier direct link generator
@@ -247,11 +246,12 @@ def fichier(link: str) -> str:
     elif len(soup.find_all("div", {"class": "ct_warn"})) == 3:
         str_2 = soup.find_all("div", {"class": "ct_warn"})[-1]
         if "you must wait" in str(str_2).lower():
-            numbers = [int(word) for word in str(str_2).split() if word.isdigit()]
-            if not numbers:
-                raise DirectDownloadLinkException("ERROR: 1fichier is on a limit. Please wait a few minutes/hour.")
-            else:
+            if numbers := [
+                int(word) for word in str(str_2).split() if word.isdigit()
+            ]:
                 raise DirectDownloadLinkException(f"ERROR: 1fichier is on a limit. Please wait {numbers[0]} minute.")
+            else:
+                raise DirectDownloadLinkException("ERROR: 1fichier is on a limit. Please wait a few minutes/hour.")
         elif "protect access" in str(str_2).lower():
           raise DirectDownloadLinkException(f"ERROR: This link requires a password!\n\n<b>This link requires a password!</b>\n- Insert sign <b>::</b> after the link and write the password after the sign.\n\n<b>Example:</b> https://1fichier.com/?smmtd8twfpm66awbqz04::love you\n\n* No spaces between the signs <b>::</b>\n* For the password, you can use a space!")
         else:
@@ -261,11 +261,12 @@ def fichier(link: str) -> str:
         str_1 = soup.find_all("div", {"class": "ct_warn"})[-2]
         str_3 = soup.find_all("div", {"class": "ct_warn"})[-1]
         if "you must wait" in str(str_1).lower():
-            numbers = [int(word) for word in str(str_1).split() if word.isdigit()]
-            if not numbers:
-                raise DirectDownloadLinkException("ERROR: 1fichier is on a limit. Please wait a few minutes/hour.")
-            else:
+            if numbers := [
+                int(word) for word in str(str_1).split() if word.isdigit()
+            ]:
                 raise DirectDownloadLinkException(f"ERROR: 1fichier is on a limit. Please wait {numbers[0]} minute.")
+            else:
+                raise DirectDownloadLinkException("ERROR: 1fichier is on a limit. Please wait a few minutes/hour.")
         elif "bad password" in str(str_3).lower():
           raise DirectDownloadLinkException("ERROR: The password you entered is wrong!")
         else:
@@ -342,10 +343,7 @@ def mdisk(url):
         res = resp.json()
     except BaseException:
         return "API UnResponsive / Invalid Link !"
-    if res["success"] is True:
-        return res["url"]
-    else:
-        return res["msg"]
+    return res["url"] if res["success"] is True else res["msg"]
 
 def wetransfer(url):
     api = "https://api.emilyx.in/api"
@@ -358,16 +356,13 @@ def wetransfer(url):
         res = resp.json()
     except BaseException:
         return "API UnResponsive / Invalid Link !"
-    if res["success"] is True:
-        return res["url"]
-    else:
-        return res["msg"]
+    return res["url"] if res["success"] is True else res["msg"]
 
 def gofile_dl(url,password=""):
     api_uri = 'https://api.gofile.io'
     client = requests.Session()
-    res = client.get(api_uri+'/createAccount').json()
-    
+    res = client.get(f'{api_uri}/createAccount').json()
+
     data = {
         'contentId': url.split('/')[-1],
         'token': res['data']['token'],
@@ -375,12 +370,9 @@ def gofile_dl(url,password=""):
         'cache': 'true',
         'password': hashlib.sha256(password.encode('utf-8')).hexdigest()
     }
-    res = client.get(api_uri+'/getContent', params=data).json()
+    res = client.get(f'{api_uri}/getContent', params=data).json()
 
-    content = []
-    for item in res['data']['contents'].values():
-        content.append(item)
-    
+    content = list(res['data']['contents'].values())
     return {
         'accountToken': data['token'],
         'files': content
@@ -396,7 +388,7 @@ def zippyshare(url):
     val = str(int(parts[0]) % int(parts[2]) + int(parts[4]) % int(parts[6]))
     surl = surl.split('"')
     burl = url.split("zippyshare.com")[0]
-    furl = burl + "zippyshare.com" + surl[1] + val + surl[-2]
+    furl = f"{burl}zippyshare.com{surl[1]}{val}{surl[-2]}"
     print(furl)
 
 def megaup(url):
@@ -410,10 +402,7 @@ def megaup(url):
         res = resp.json()
     except BaseException:
         return "API UnResponsive / Invalid Link !"
-    if res["success"] is True:
-        return res["url"]
-    else:
-        return res["msg"]
+    return res["url"] if res["success"] is True else res["msg"]
 
 
 supported_sites_list = "disk.yandex.com\nmediafire.com\nuptobox.com\nosdn.net\ngithub.com\nhxfile.co\nanonfiles.com\nletsupload.io\n1drv.ms(onedrive)\n\
