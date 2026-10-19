@@ -16,7 +16,7 @@ log.basicConfig(
 # log.error() - For Error in Bypass / including if occured due to missing values
 # log.info() - Received Links / Bot General Messages
 
-TOKEN = Vars[0]
+TOKEN = Vars[8909095285:AAHMd65q9uPsorzokdhxc5YpW8AIn6HCaSA]
 GDTot_Crypt = Vars[1]
 Laravel_Session = Vars[2]
 XSRF_TOKEN = Vars[3]
